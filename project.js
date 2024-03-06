@@ -39,6 +39,7 @@ const getNumberOfLines = () => {
   }
 };
 
+// 3. Get bet amount
 const getBet = (balance, lines) => {
   while (true) {
     const bet = prompt("Enter the bet per line: ");
