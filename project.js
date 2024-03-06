@@ -39,5 +39,20 @@ const getNumberOfLines = () => {
   }
 };
 
-const depositAmount = deposit();
+const getBet = (balance) => {
+  while (true) {
+    const bet = prompt("Enter the total bet: ");
+    const numberBet = parseFloat(bet); // Converting bet from a string to an integer
+
+    if (isNaN(numberBet) || numberBet <= 0 || numberBet > balance) {
+      // Ensuring that the inputted bet amount is lower than the current balance
+      console.log("Invalid bet, please try again.");
+    } else {
+      return numberBet;
+    }
+  }
+};
+
+let balance = deposit();
 const numberOfLines = getNumberOfLines();
+const bet = getBet(balance);
