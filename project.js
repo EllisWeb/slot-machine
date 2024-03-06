@@ -9,11 +9,11 @@
 // Gaining access to package to gather user data
 const prompt = require("prompt-sync")();
 
-// Getting user input for deposit until given a valid amount (1 or higher)
+// 1. Getting user input for deposit until given a valid amount (1 or higher)
 const deposit = () => {
   while (true) {
     const depositAmount = prompt("Enter a deposit amount: ");
-    const numberDepositAmount = parseFloat(depositAmount); // Converting depositAmount to an integer
+    const numberDepositAmount = parseFloat(depositAmount); // Converting depositAmount from a string to an integer
 
     if (isNaN(numberDepositAmount) || numberDepositAmount <= 0) {
       console.log("Invalid deposit amount, please try again.");
@@ -23,7 +23,21 @@ const deposit = () => {
   }
 };
 
-const depositAmount = deposit();
+// 2. Getting user input for number of lines until given a valid amount (Between 1 to 3)
+const getNumberOfLines = () => {
+  while (true) {
+    const lines = prompt(
+      "Enter the number of lines you'd like to bet on (1-3): "
+    );
+    const numberOfLines = parseFloat(lines); // Converting numberOfLines from a string to an integer
 
-// Testing
-console.log(depositAmount);
+    if (isNaN(numberOfLines) || numberOfLines <= 0 || numberOfLines > 3) {
+      console.log("Invalid number of lines, please try again.");
+    } else {
+      return numberOfLines;
+    }
+  }
+};
+
+const depositAmount = deposit();
+const numberOfLines = getNumberOfLines();
